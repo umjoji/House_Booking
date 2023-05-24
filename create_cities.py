@@ -25,7 +25,7 @@ def create_states_id_dict(filename):
 
 def create_cities_file():
     with open("create_cities.txt", "w") as f:
-        states_id_dict = create_states_id_dict("state.csv")
+        states_id_dict = create_states_id_dict("cities.csv")
         cities_dict = create_cities_dict("nigeria_cities.csv")
         for key, value in cities_dict.items():
             for key1, value1 in states_id_dict.items():
