@@ -22,7 +22,7 @@ def get_place_amenities(place_id):
     if not place:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('HF_TYPE_STORAGE') == "db":
         amenities = [amenity.to_dict() for amenity in place.amenities]
     else:
         amenities = [storage.get(Amenity, amenity_id).to_dict()
@@ -49,7 +49,7 @@ def delete_place_amenity(place_id, amenity_id):
     if not amenity:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('HF_TYPE_STORAGE') == "db":
         if amenity not in place.amenities:
             abort(404)
         place.amenities.remove(amenity)
@@ -80,7 +80,7 @@ def post_place_amenity(place_id, amenity_id):
     if not amenity:
         abort(404)
 
-    if environ.get('HBNB_TYPE_STORAGE') == "db":
+    if environ.get('HF_TYPE_STORAGE') == "db":
         if amenity in place.amenities:
             return make_response(jsonify(amenity.to_dict()), 200)
         else:
